@@ -1,0 +1,20 @@
+# docker compose -f "docker-compose.yml" up -d --build
+# docker-desktop://dashboard/build/desktop-linux/desktop-linux/t91lkq0fas563p72pouhbrwsq
+
+services:
+  nodejs-app:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+
+    ports:
+      - "2378:2378"
+
+    image: nodejs_proxy
+    container_name: ubuntu_webservice_proxy
+    restart: always
+    user: "1000:1000"
+
+networks:
+  ws-node-network:
+    driver: bridge
